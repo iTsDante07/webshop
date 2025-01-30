@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/admin/sales', [ProductsController::class, 'salesHistory'])->name('admin.sales')->middleware('auth', 'admin');
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/seller/{user}', [ProductsController::class, 'showSellerProducts'])->name('seller.products');
 Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');

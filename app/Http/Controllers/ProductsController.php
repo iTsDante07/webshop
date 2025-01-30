@@ -36,7 +36,7 @@ class ProductsController extends Controller
     {
         $products = $user->products;
         $sellers = User::has('products')->get();
-        $sales = collect();
+        $sales = collect(); // Define an empty collection to avoid errors
 
         return view('products.index', compact('products', 'sellers', 'sales'));
     }

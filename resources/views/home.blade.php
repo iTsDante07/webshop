@@ -9,6 +9,11 @@
             <a href="#featured-products" class="inline-block mt-4 bg-blue-500 text-white rounded-lg py-2 px-4 hover:bg-blue-600">Nu Winkelen</a>
         </div>
 
+        <div class="bg-blue-100 p-6 rounded-lg mb-12 text-center">
+            <h2 class="text-3xl font-semibold mb-2">Tijdelijke Aanbieding!</h2>
+            <p class="text-lg mb-4">Krijg 20% korting op je eerste aankoop. Gebruik code: <strong>EERSTE20</strong></p>
+            <a href="#featured-products" class="inline-block bg-blue-500 text-white rounded-lg py-2 px-4 hover:bg-blue-600">Nu Winkelen</a>
+        </div>
 
         <h2 class="text-3xl font-semibold mb-6">Winkelen op Categorieën</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">

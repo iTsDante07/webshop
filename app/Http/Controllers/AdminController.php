@@ -41,16 +41,21 @@ class AdminController extends Controller
     }
     public function salesHistory(Request $request)
     {
+        // Get all users who have sales
         $sellers = User::has('sales')->get();
 
+        // Initialize the query for sales
         $query = Sale::with(['product', 'buyer', 'seller']);
 
+        // Filter by selected seller if provided
         if ($request->has('seller_id') && $request->seller_id != 'all') {
             $query->where('seller_id', $request->seller_id);
         }
 
+        // Execute the query to get sales
         $sales = $query->get();
 
+        // Pass both $sales and $sellers to the view
         return view('admin.sales', compact('sales', 'sellers'));
     }
 

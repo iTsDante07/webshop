@@ -8,7 +8,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
-        return view('home', compact('products'));
+        $products = Product::all(); // Haal alle producten op
+        return view('home', compact('products')); // Stuur de producten naar de 'home' view
     }
 }

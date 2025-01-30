@@ -25,6 +25,7 @@ class ProductController extends Controller
 
     public function buy(Product $product)
     {
+        // Redirect to the cart add route instead of buying immediately
         return redirect()->route('cart.add', $product);
     }
 

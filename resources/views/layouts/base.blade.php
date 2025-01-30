@@ -23,11 +23,16 @@
                 <a href="/contact" class="text-gray-600 hover:text-gray-800">Contact</a>
                 <a href="{{ route('orders.my_orders') }}" class="text-gray-600 hover:text-gray-800" >My Orders</a>
 
+
+
+
                 @if (Auth::check())
+                    <!-- Admin Sales Link, only visible to admins -->
                     @if (Auth::user()->isAdmin())
                         <a href="{{ route('admin.sales') }}" class="text-gray-600 hover:text-gray-800">Admin Sales</a>
                     @endif
 
+                    <!-- User Dropdown Menu -->
                     <div x-data="{ open: false }" class="relative inline-block text-left">
                         <button @click="open = !open" class="text-gray-600 hover:text-gray-800">
                             {{ Auth::user()->name }}
@@ -52,17 +57,18 @@
                     <a href="{{ route('login') }}" class="text-gray-600 hover:text-gray-800">Log in</a>
                     <a href="{{ route('register') }}" class="text-gray-600 hover:text-gray-800">Register</a>
                 @endif
-                <a href="{{ route('cart.index') }}" class="relative text-gray-600 hover:text-gray-800">
-                    <svg class="w-6 h-6 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m4-9h10m0 0l2-5M16 16a2 2 0 10-4 0 2 2 0 004 0z" />
-                    </svg>
-                    @if($cartCount > 0)
-                        <span class="absolute -top-2 -right-2 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
-                            {{ $cartCount }}
-                        </span>
-                    @endif
-                </a>
-
+                                <!-- Cart Icon with Count -->
+                                <a href="{{ route('cart.index') }}" class="relative text-gray-600 hover:text-gray-800">
+                                    <svg class="w-6 h-6 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m4-9h10m0 0l2-5M16 16a2 2 0 10-4 0 2 2 0 004 0z" />
+                                    </svg>
+                                    <!-- Badge for Cart Count -->
+                                    @if($cartCount > 0)
+                                        <span class="absolute -top-2 -right-2 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
+                                            {{ $cartCount }}
+                                        </span>
+                                    @endif
+                                </a>
             </nav>
         </div>
     </header>

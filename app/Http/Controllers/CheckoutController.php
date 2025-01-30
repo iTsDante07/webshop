@@ -27,9 +27,11 @@ class CheckoutController extends Controller
                 return redirect()->route('checkout')->with('error', 'Not enough stock for ' . $product->name);
             }
 
+            // Reduce stock
             $product->stock -= $item->quantity;
             $product->save();
 
+            // Register the sale
             Sale::create([
                 'product_id' => $product->id,
                 'buyer_id' => Auth::id(),
@@ -38,6 +40,7 @@ class CheckoutController extends Controller
             ]);
         }
 
+        // Clear the cart after successful checkout
         Auth::user()->cartItems()->delete();
 
         return redirect()->route('products.index')->with('success', 'Checkout completed successfully!');
